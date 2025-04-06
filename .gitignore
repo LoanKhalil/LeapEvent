@@ -1,0 +1,19 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/LeapEvent/config
+/.vs/LeapEvent/DesignTimeBuild
+/.vs/LeapEvent/FileContentIndex
+/.vs/LeapEvent/v17
+/.vs/ProjectEvaluation
+/LeapEventApi/.vs/LeapEventApi/config
+/LeapEventApi/.vs/LeapEventApi/DesignTimeBuild
+/LeapEventApi/.vs/LeapEventApi/FileContentIndex
+/LeapEventApi/.vs/LeapEventApi/v17
+/LeapEventApi/.vs/ProjectEvaluation
+/LeapEventApi/bin/Debug/net8.0
+/LeapEventApi/obj
+/LeapEventApi/Properties
+/node_modules
+/.vs
