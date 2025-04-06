@@ -5,6 +5,27 @@ VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeapEventApi", "LeapEventApi.csproj", "{68E30556-2301-4188-A5FA-2E543B488C6F}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LeapEventApp", "..\LeapEventApp\", "{1DF7A5D2-E031-4A51-9F1C-582CE5406071}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_51190"
+		Debug.AspNetCompiler.PhysicalPath = "..\LeapEventApp\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51190\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_51190"
+		Release.AspNetCompiler.PhysicalPath = "..\LeapEventApp\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51190\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "51190"
+		SlnRelativePath = "..\LeapEventApp\"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +36,10 @@ Global
 		{68E30556-2301-4188-A5FA-2E543B488C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68E30556-2301-4188-A5FA-2E543B488C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68E30556-2301-4188-A5FA-2E543B488C6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DF7A5D2-E031-4A51-9F1C-582CE5406071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DF7A5D2-E031-4A51-9F1C-582CE5406071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DF7A5D2-E031-4A51-9F1C-582CE5406071}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DF7A5D2-E031-4A51-9F1C-582CE5406071}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
