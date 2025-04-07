@@ -25,3 +25,4 @@
 /LeapEventApi/.config
 /LeapEventApi/bin/Release/net8.0
 /LeapEventTest/bin/Release/net8.0
+/LeapEventApi/LeapEventApi.csproj.user
