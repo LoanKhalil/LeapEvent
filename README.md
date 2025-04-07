@@ -17,7 +17,7 @@ https://leapeventapp-ftauffe0gugahjfu.canadacentral-01.azurewebsites.net/
 ## Section 2: System Design & Troubleshooting
 
 I have not used Redis before, but for high-traffic, I would imagine writing to database would be a problem.
-We had this issue with oil and gas sensors, IoT devices.  I did a sandbox implementation of MQTT subsriber and broker, which might also work.  
+We had this issue with oil and gas sensors (IoT devices).  I did a sandbox implementation of MQTT subsriber and broker, which might work.  
 Data are written to database in batches as oppose to each discreet value. 
 
 So a quick Google about Redis, 3 caching strategies are presented:
@@ -34,7 +34,7 @@ Concept: Writes are initially made to the cache, and then, asynchronously, to th
 Pros: Reduces write load on the database, as writes can be batched.
 Cons: Can lead to temporary data inconsistency if the cache fails before writes to the database.
 
-I think #3 is the most relevant caching strategy for the purpose of a ticketing system.
+I think #3 is the most relevant caching strategy for this use case.
 
 Looks like Azure offers Redis cache, but not having used it before, I can't really add much.
 
