@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeapEventApi", "LeapEventAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeapEventTest", "..\LeapEventTest\LeapEventTest.csproj", "{C722BE71-BBD5-4D35-803A-59D154080987}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LeapEventApp", "..\LeapEventApp\", "{1DF7A5D2-E031-4A51-9F1C-582CE5406071}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LeapEventApp", "..\LeapEventApp\", "{52C4ADD0-2E42-4CB7-BC83-D93FF35FA995}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_51190"
@@ -42,10 +42,10 @@ Global
 		{C722BE71-BBD5-4D35-803A-59D154080987}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C722BE71-BBD5-4D35-803A-59D154080987}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C722BE71-BBD5-4D35-803A-59D154080987}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1DF7A5D2-E031-4A51-9F1C-582CE5406071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1DF7A5D2-E031-4A51-9F1C-582CE5406071}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1DF7A5D2-E031-4A51-9F1C-582CE5406071}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{1DF7A5D2-E031-4A51-9F1C-582CE5406071}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{52C4ADD0-2E42-4CB7-BC83-D93FF35FA995}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52C4ADD0-2E42-4CB7-BC83-D93FF35FA995}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52C4ADD0-2E42-4CB7-BC83-D93FF35FA995}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{52C4ADD0-2E42-4CB7-BC83-D93FF35FA995}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
