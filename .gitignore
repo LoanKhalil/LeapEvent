@@ -22,3 +22,6 @@
 /.angular/cache/18.2.12/LeapEventApp
 /.vscode
 /dist/leap-event-app
+/LeapEventApi/.config
+/LeapEventApi/bin/Release/net8.0
+/LeapEventTest/bin/Release/net8.0
