@@ -1,15 +1,22 @@
 
     
-        <div class="fixed-top-menu">
-            <a mat-button (click)="getEvents(30)">Events</a>
-            <a mat-button (click)="getEvents(30)">30</a>
-            <a mat-button (click)="getEvents(60)">60</a>
-            <a mat-button (click)="getEvents(180)">180</a>
-            <a mat-button [routerLink]="['sales-summary']">Sales Summary</a>
-            <span fxFlex></span>
-            <button mat-icon-button (click)="clearCache()"><mat-icon>refresh</mat-icon></button>
-        </div>
-        <div class="container" style="height: 90vh; padding-top: 60px;">
-            <router-outlet></router-outlet>
-        </div>
-    
+<div class="fixed-top-menu">
+    <a mat-button (click)="getEvents(30)">Events</a>
+    <a mat-button (click)="getEvents(30)">30</a>
+    <a mat-button (click)="getEvents(60)">60</a>
+    <a mat-button (click)="getEvents(180)">180</a>
+    <a mat-button [routerLink]="['sales-summary']">Sales Summary</a>
+    <span fxFlex></span>
+    <button mat-icon-button (click)="clearCache()"><mat-icon>refresh</mat-icon></button>
+</div>
+<div class="container" style="height: 90vh; padding-top: 60px;">
+    <router-outlet></router-outlet>
+</div>
+
+
+<div *ngIf="_loading" style="position: fixed; top: 0; left: 0; height: 100vh; width: 100%; background-color:whitesmoke; opacity: 60%;  z-index: 1001;">
+    <div style="position: fixed; top: 40%; left: 50%; transform: translateX(-50%); z-index: 1001;">
+        <div style="color: black; opacity: 100%; background-color: beige; padding: 10px;">{{_text}}</div>
+        <div fxLayoutAlign="center" style="background-color: beige;"><mat-spinner diameter="50"></mat-spinner></div>
+    </div>
+</div>

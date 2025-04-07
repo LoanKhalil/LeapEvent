@@ -4,6 +4,7 @@ import { Events } from '../../models/Events.model';
 import { AppModules } from '../../app-modules';
 import { MatSelectChange } from '@angular/material/select';
 import { ActivatedRoute } from '@angular/router';
+import { LoaderService } from '../../services/loader.service';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class EventListComponent implements OnInit {
   constructor(
     private eventService: EventService,
     private route: ActivatedRoute,
-    private cdr: ChangeDetectorRef
+    private loaderService: LoaderService
   ) {}
 
   ngOnInit() {
@@ -40,11 +41,12 @@ export class EventListComponent implements OnInit {
   }
 
   loadEvents() {
+    this.loaderService.showLoader('Loading Events...')
     this.eventService.getEvents(this._days).subscribe({
       next: data => {
         this.events = data;
         this.sortEvents();
-        
+        this.loaderService.hideLoader();
       },
       error: err => this.error = err.message
     });
