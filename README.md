@@ -20,7 +20,7 @@ I have not used Redis before, but for high-traffic, I would imagine writing to d
 We had this issue with oil and gas sensors (IoT devices).  I did a sandbox implementation of MQTT subsriber and broker, which might work.  
 Data are written to database in batches as oppose to each discreet value. 
 
-So a quick Google about Redis, 3 caching strategies are presented:
+A quick Google about Redis, 3 caching strategies are presented:
 1. Cache-Aside:
 Concept: The application checks the cache first. If the data is found, it's returned; otherwise, it's fetched from the database, stored in the cache, and then returned to the application.
 Pros: Simple to implement and well-suited for read-heavy applications.
