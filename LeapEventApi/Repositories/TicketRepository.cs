@@ -112,7 +112,7 @@ namespace LeapEventApi.Repositories
                             EndsOn = e.EndsOn,
                             Location = e.Location,
                             TotalVolume = r.Volume
-                        })
+                        }).OrderByDescending(x => x.TotalVolume)
                     .ToList();
 
                 return result;

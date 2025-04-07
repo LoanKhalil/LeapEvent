@@ -24,8 +24,8 @@
     <tbody>
       <tr *ngFor="let event of events">
         <td>{{ event.name }}</td>
-        <td>{{ event.startsOn | date: 'medium' }}</td>
-        <td>{{ event.endsOn | date: 'medium' }}</td>
+        <td>{{ event.startsOn | date: 'EEE MMM dd, yyyy' }}</td>
+        <td>{{ event.endsOn | date: 'EEE MMM dd, yyyy' }}</td>
       </tr>
     </tbody>
   </table>

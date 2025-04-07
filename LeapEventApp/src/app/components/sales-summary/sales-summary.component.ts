@@ -4,6 +4,7 @@ import { Events } from '../../models/Events.model';
 import { AppModules } from '../../app-modules';
 import { EventsWithVolume } from '../../models/EventsWithVolume.model';
 import { EventsWithRevenue } from '../../models/EventsWithRevenue.model';
+import { LoaderService } from '../../services/loader.service';
 
 @Component({
   selector: 'app-sales-summary',
@@ -20,7 +21,10 @@ export class SalesSummaryComponent {
 
   error: string | null = null;
 
-  constructor(private eventService: EventService) {}
+  constructor(
+    private eventService: EventService, 
+    private loaderService: LoaderService
+  ) {}
 
   ngOnInit() {
     this.loadTopEventsByVolume();
@@ -28,8 +32,12 @@ export class SalesSummaryComponent {
   }
 
   loadTopEventsByVolume() {
+    this.loaderService.showLoader('Loading...')
     this.eventService.getTop5Volume().subscribe({
-      next: result => this.top5VolumeEvents = result.data,
+      next: result => {
+        this.loaderService.hideLoader();
+        this.top5VolumeEvents = result.data
+      },
       error: err => this.error = err.message
     });
 
@@ -37,8 +45,12 @@ export class SalesSummaryComponent {
   }
 
   loadTopEventsByRevenue() {
+    this.loaderService.showLoader('Loading...')
     this.eventService.getTop5Revenue().subscribe({
-      next: result => this.top5RevenueEvents = result.data,
+      next: result => {
+        this.loaderService.hideLoader();
+        this.top5RevenueEvents = result.data
+      },
       error: err => this.error = err.message
     });
 
