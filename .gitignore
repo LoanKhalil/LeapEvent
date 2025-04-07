@@ -17,3 +17,5 @@
 /LeapEventApi/Properties
 /node_modules
 /.vs
+/LeapEventTest/bin/Debug/net8.0
+/LeapEventTest/obj
