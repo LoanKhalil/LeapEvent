@@ -19,3 +19,6 @@
 /.vs
 /LeapEventTest/bin/Debug/net8.0
 /LeapEventTest/obj
+/.angular/cache/18.2.12/LeapEventApp
+/.vscode
+/dist/leap-event-app
