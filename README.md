@@ -10,7 +10,8 @@ I added the use of indexDB for caching the results for 30/60/180 days however I 
 I felt like more time was spent setting up the projects and deploying the app/api to Azure, compared to the amount of time spent coding, but in my experience, this is common.
 Now that the projects and environments are set up, adding more logic and features will be a breeze.
 
-
+Final app can be view at:
+https://leapeventapp-ftauffe0gugahjfu.canadacentral-01.azurewebsites.net/
 
 
 
