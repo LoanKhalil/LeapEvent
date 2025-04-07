@@ -5,7 +5,7 @@ namespace LeapEventApi.Services
 {
     public interface IEventService
     {
-        List<Event> GetUpcomingEvents(int days);
+        List<Events> GetUpcomingEvents(int days);
     }
 
     public class EventService : IEventService
@@ -17,6 +17,6 @@ namespace LeapEventApi.Services
             _eventRepository = eventRepository;
         }
 
-        public List<Event> GetUpcomingEvents(int days) => _eventRepository.GetUpcomingEvents(days);
+        public List<Events> GetUpcomingEvents(int days) => _eventRepository.GetUpcomingEvents(days);
     }
 }

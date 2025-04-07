@@ -3,15 +3,16 @@ using LeapEventApi.Models;
 
 namespace LeapEventApi.Mapping
 {
-    public class EventMap : ClassMap<Event>
+    public class EventsMap : ClassMap<Events>
     {
-        public EventMap()
+        public EventsMap()
         {
             Table("Events");
             Id(x => x.Id);
             Map(x => x.Name);
-            Map(x => x.StartDateTime);
-            Map(x => x.EndDateTime);
+            Map(x => x.StartsOn);
+            Map(x => x.EndsOn);
+            Map(x => x.Location);
         }
     }
 }

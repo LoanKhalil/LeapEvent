@@ -5,8 +5,8 @@ namespace LeapEventApi.Repositories
 {
     public interface IEventRepository
     {
-        List<Event> GetUpcomingEvents(int days);
-        Event GetById(int id);
+        List<Events> GetUpcomingEvents(int days);
+        Events GetById(int id);
     }
     public class EventRepository : IEventRepository
     {
@@ -16,19 +16,19 @@ namespace LeapEventApi.Repositories
             _sessionFactory = sessionFactory;
         }
 
-        public List<Event> GetUpcomingEvents(int days)
+        public List<Events> GetUpcomingEvents(int days)
         {
             using var session = _sessionFactory.OpenSession();
             var endDate = DateTime.UtcNow.AddDays(days);
-            return session.Query<Event>()
-                .Where(e => e.StartDateTime >= DateTime.UtcNow && e.StartDateTime <= endDate)
+            return session.Query<Events>()
+                .Where(e => e.StartsOn >= DateTime.UtcNow && e.StartsOn <= endDate)
                 .ToList();
         }
 
-        public Event GetById(int id)
+        public Events GetById(int id)
         {
             using var session = _sessionFactory.OpenSession();
-            return session.Get<Event>(id);
+            return session.Get<Events>(id);
         }
     }
 }

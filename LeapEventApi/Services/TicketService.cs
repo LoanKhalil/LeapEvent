@@ -1,14 +1,14 @@
 ﻿using LeapEventApi.Models;
 using LeapEventApi.Repositories;
-using NHibernate;
 
 namespace LeapEventApi.Services
 {
     public interface ITicketService
     {
-        IList<Ticket> GetTicketsForEvent(int eventId);
-        IList<Event> GetTopSellingEventsByCount();
-        IList<Event> GetTopSellingEventsByRevenue();
+        IList<TicketSales> GetTicketsForEvent(string eventId);
+        IList<EventsWithVolume> GetTopSellingEventsByVolume();
+        IList<EventsWithRevenue> GetTopSellingEventsByRevenue();
+
     }
 
     public class TicketService : ITicketService
@@ -20,17 +20,17 @@ namespace LeapEventApi.Services
             _ticketRepository = ticketRepository;
         }
 
-        public IList<Ticket> GetTicketsForEvent(int eventId)
+        public IList<TicketSales> GetTicketsForEvent(string eventId)
         {
             return _ticketRepository.GetTicketsForEvent(eventId);
         }
 
-        public IList<Event> GetTopSellingEventsByCount()
+        public IList<EventsWithVolume> GetTopSellingEventsByVolume()
         {
             return _ticketRepository.GetTopSellingEventsByCount();
         }
 
-        public IList<Event> GetTopSellingEventsByRevenue()
+        public IList<EventsWithRevenue> GetTopSellingEventsByRevenue()
         {
             return _ticketRepository.GetTopSellingEventsByRevenue();
         }

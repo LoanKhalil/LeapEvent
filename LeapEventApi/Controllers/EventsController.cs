@@ -1,10 +1,10 @@
-﻿using LeapEventApi.Services;
-using Microsoft.AspNetCore.Http;
+﻿using LeapEventApi.Models;
+using LeapEventApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LeapEventApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class EventsController : ControllerBase
     {
@@ -17,32 +17,63 @@ namespace LeapEventApi.Controllers
             _ticketService = ticketService;
         }
 
-        [HttpGet]
-        public IActionResult Get([FromQuery] int days = 30)
+        [HttpGet("{days}")]
+        public ApiResponse<IEnumerable<Events>> Get(int days = 30)
         {
-            var events = _eventService.GetUpcomingEvents(days);
-            return Ok(events);
+            try
+            { var events = _eventService.GetUpcomingEvents(days);
+                return new ApiResponse<IEnumerable<Events>>(events);
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<IEnumerable<Events>>(new List<Events>(), true, "Exception retrieving events.");
+            }
+
         }
 
         [HttpGet("{eventId}/tickets")]
-        public IActionResult GetTickets(int eventId)
+        public ApiResponse<IEnumerable<TicketSales>> GetTickets(string eventId)
         {
-            var tickets = _ticketService.GetTicketsForEvent(eventId);
-            return Ok(tickets);
+            try
+            {
+                var tickets = _ticketService.GetTicketsForEvent(eventId);
+                return new ApiResponse<IEnumerable<TicketSales>>(tickets);
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<IEnumerable<TicketSales>>(new List<TicketSales>(), true,
+                    "Exception retrieving ticket sales.");
+            }
         }
 
-        [HttpGet("top-selling/count")]
-        public IActionResult TopSellingByCount()
+        [HttpGet("TopSellingEventsByVolume")]
+        public ApiResponse<IEnumerable<EventsWithVolume>> TopSellingEventsByVolume()
         {
-            var events = _ticketService.GetTopSellingEventsByCount();
-            return Ok(events);
+            try
+            {
+                var events = _ticketService.GetTopSellingEventsByVolume();
+                return new ApiResponse<IEnumerable<EventsWithVolume>>(events);
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<IEnumerable<EventsWithVolume>>(new List<EventsWithVolume>(), true, "Exception retrieving top volume events.");
+            }
+
         }
 
-        [HttpGet("top-selling/revenue")]
-        public IActionResult TopSellingByRevenue()
+        [HttpGet("TopSellingEventsByRevenue")]
+        public ApiResponse<IEnumerable<EventsWithRevenue>> TopSellingEventsByRevenue()
         {
-            var events = _ticketService.GetTopSellingEventsByRevenue();
-            return Ok(events);
+            try
+            {
+                var events = _ticketService.GetTopSellingEventsByRevenue();
+                return new ApiResponse<IEnumerable<EventsWithRevenue>>(events);
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<IEnumerable<EventsWithRevenue>>(new List<EventsWithRevenue>(), true, "Exception retrieving top revenue events.");
+            }
+
         }
     }
 }
