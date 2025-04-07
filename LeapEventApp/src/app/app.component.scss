@@ -1,0 +1,20 @@
+
+.fixed-top-menu {
+    padding: 10px 20px;
+    background-color: lightblue;
+    height: 48px;
+
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);  /* Centers it */
+    
+    display: flex;
+    align-items: center;
+    
+    
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+    z-index: 2;
+  }
