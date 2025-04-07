@@ -69,6 +69,11 @@ namespace LeapEventApi
 
             app.MapControllers();
 
+            app.MapGet("/", async context =>
+            {
+                await context.Response.WriteAsync("Api running");
+            });
+
             app.Run();
         }
     }
