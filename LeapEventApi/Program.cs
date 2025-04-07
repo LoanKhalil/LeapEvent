@@ -1,13 +1,9 @@
-
-using System.Reflection;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using LeapEventApi.Mapping;
-using LeapEventApi.Models;
 using LeapEventApi.Repositories;
 using LeapEventApi.Services;
 using NHibernate;
-using NHibernate.Cfg;
 using NHibernate.Dialect;
 using NHibernate.Driver;
 
