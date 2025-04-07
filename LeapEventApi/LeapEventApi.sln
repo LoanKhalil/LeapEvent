@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeapEventApi", "LeapEventApi.csproj", "{68E30556-2301-4188-A5FA-2E543B488C6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeapEventTest", "..\LeapEventTest\LeapEventTest.csproj", "{C722BE71-BBD5-4D35-803A-59D154080987}"
+EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LeapEventApp", "..\LeapEventApp\", "{1DF7A5D2-E031-4A51-9F1C-582CE5406071}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
@@ -26,8 +28,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LeapEventApp", "..\LeapEven
 		SlnRelativePath = "..\LeapEventApp\"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeapEventTest", "..\LeapEventTest\LeapEventTest.csproj", "{C722BE71-BBD5-4D35-803A-59D154080987}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,14 +38,14 @@ Global
 		{68E30556-2301-4188-A5FA-2E543B488C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68E30556-2301-4188-A5FA-2E543B488C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68E30556-2301-4188-A5FA-2E543B488C6F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1DF7A5D2-E031-4A51-9F1C-582CE5406071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1DF7A5D2-E031-4A51-9F1C-582CE5406071}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1DF7A5D2-E031-4A51-9F1C-582CE5406071}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{1DF7A5D2-E031-4A51-9F1C-582CE5406071}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{C722BE71-BBD5-4D35-803A-59D154080987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C722BE71-BBD5-4D35-803A-59D154080987}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C722BE71-BBD5-4D35-803A-59D154080987}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C722BE71-BBD5-4D35-803A-59D154080987}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DF7A5D2-E031-4A51-9F1C-582CE5406071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DF7A5D2-E031-4A51-9F1C-582CE5406071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DF7A5D2-E031-4A51-9F1C-582CE5406071}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DF7A5D2-E031-4A51-9F1C-582CE5406071}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

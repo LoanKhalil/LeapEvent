@@ -1,0 +1,34 @@
+
+
+  <div fxLayout="row" fxLayoutAlign="none center">
+    <mat-form-field>
+      <mat-label>Sort By</mat-label>
+      <mat-select (selectionChange)="onSortChange($event)">
+        <mat-option value="startDate">Start Date</mat-option>
+        <mat-option value="name">Name</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <span fxFlex></span>
+    <span style="padding-left: 20px; padding-bottom: 18px;">Result Count: {{ events.length}}</span>  
+  </div>
+    
+  
+  <table class="table" *ngIf="events.length > 0">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events">
+        <td>{{ event.name }}</td>
+        <td>{{ event.startsOn | date: 'medium' }}</td>
+        <td>{{ event.endsOn | date: 'medium' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  
