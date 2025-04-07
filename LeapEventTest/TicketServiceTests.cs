@@ -2,24 +2,48 @@
 using LeapEventApi.Repositories;
 using LeapEventApi.Services;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NHibernate;
 
 namespace LeapEventTest
 {
     public class TicketServiceTests
     {
-        private Mock<ITicketRepository> _ticketRepoMock;
+
         private TicketService _ticketService;
+        
+
+        private Mock<ISessionFactory> _mockSessionFactory;
+        private Mock<ISession> _mockSession;
+        private Mock<IQueryable<TicketSales>> _mockTicketSalesQuery;
+        private Mock<IQueryable<Events>> _mockEventsQuery;
+        private Mock<ITicketRepository> _mockTicketRepository;
 
         [SetUp]
         public void SetUp()
         {
-            _ticketRepoMock = new Mock<ITicketRepository>();
-            _ticketService = new TicketService(_ticketRepoMock.Object);
+            
+            
+            // Mock ISessionFactory and ISession
+            _mockSessionFactory = new Mock<ISessionFactory>();
+            _mockSession = new Mock<ISession>();
+
+            // Mock the TicketSales query
+            _mockTicketSalesQuery = new Mock<IQueryable<TicketSales>>();
+            _mockSession.Setup(s => s.Query<TicketSales>()).Returns(_mockTicketSalesQuery.Object);
+
+            // Mock the Events query
+            _mockEventsQuery = new Mock<IQueryable<Events>>();
+            _mockSession.Setup(s => s.Query<Events>()).Returns(_mockEventsQuery.Object);
+
+            // Mock session factory to return our mocked session
+            _mockSessionFactory.Setup(f => f.OpenSession()).Returns(_mockSession.Object);
+
+            
+            _mockTicketRepository = new Mock<ITicketRepository>();
+
+            // Initialize the TicketService with the mocked session factory
+            _ticketService = new TicketService(_mockTicketRepository.Object);
+
         }
 
         [Test]
@@ -33,7 +57,7 @@ namespace LeapEventTest
                 new TicketSales { Id = "124", EventId = eventId, PriceInCents = 6000 }
             };
 
-            _ticketRepoMock.Setup(r => r.GetTicketsForEvent(eventId)).Returns(mockTickets);
+            _mockTicketRepository.Setup(r => r.GetTicketsForEvent(eventId)).Returns(mockTickets);
 
             // Act
             var result = _ticketService.GetTicketsForEvent(eventId);
@@ -54,7 +78,7 @@ namespace LeapEventTest
                 new EventsWithVolume { Id = "124", Name = "Event B", TotalVolume = 90 }
             };
 
-            _ticketRepoMock.Setup(r => r.GetTopSellingEventsByCount()).Returns(mockEvents);
+            _mockTicketRepository.Setup(r => r.GetTopSellingEventsByCount()).Returns(mockEvents);
 
             // Act
             var result = _ticketService.GetTopSellingEventsByVolume();
@@ -75,7 +99,7 @@ namespace LeapEventTest
                 new EventsWithRevenue { Id = "124", Name = "Event B", TotalRevenue = 80000 }
             };
 
-            _ticketRepoMock.Setup(r => r.GetTopSellingEventsByRevenue()).Returns(mockEvents);
+            _mockTicketRepository.Setup(r => r.GetTopSellingEventsByRevenue()).Returns(mockEvents);
 
             // Act
             var result = _ticketService.GetTopSellingEventsByRevenue();
@@ -85,5 +109,55 @@ namespace LeapEventTest
             Assert.AreEqual(2, result.Count);
             Assert.AreEqual(100000, result[0].TotalRevenue);
         }
+
+        [Test]
+        public void GetTopSellingEventsByRevenue_ReturnsTop5EventsByRevenue()
+        {
+            // Arrange: Setup mock data
+            var ticketSales = new List<TicketSales>
+            {
+                new TicketSales { EventId = "1", PriceInCents = 100 },
+                new TicketSales { EventId = "1", PriceInCents = 200 },
+                new TicketSales { EventId = "2", PriceInCents = 50 },
+                new TicketSales { EventId = "3", PriceInCents = 300 },
+                new TicketSales { EventId = "4", PriceInCents = 150 },
+                new TicketSales { EventId = "5", PriceInCents = 400 },
+            };
+
+            var events = new List<Events>
+            {
+                new Events { Id = "1", Name = "Event 1", StartsOn = DateTime.Now, EndsOn = DateTime.Now.AddHours(2), Location = "Location 1" },
+                new Events { Id = "2", Name = "Event 2", StartsOn = DateTime.Now, EndsOn = DateTime.Now.AddHours(2), Location = "Location 2" },
+                new Events { Id = "3", Name = "Event 3", StartsOn = DateTime.Now, EndsOn = DateTime.Now.AddHours(2), Location = "Location 3" },
+                new Events { Id = "4", Name = "Event 4", StartsOn = DateTime.Now, EndsOn = DateTime.Now.AddHours(2), Location = "Location 4" },
+                new Events { Id = "5", Name = "Event 5", StartsOn = DateTime.Now, EndsOn = DateTime.Now.AddHours(2), Location = "Location 5" }
+            };
+
+            // Setup the mock queries to return the data
+            _mockTicketSalesQuery.Setup(ts => ts.Provider).Returns(ticketSales.AsQueryable().Provider);
+            _mockTicketSalesQuery.Setup(ts => ts.Expression).Returns(ticketSales.AsQueryable().Expression);
+            _mockTicketSalesQuery.Setup(ts => ts.ElementType).Returns(ticketSales.AsQueryable().ElementType);
+            _mockTicketSalesQuery.Setup(ts => ts.GetEnumerator()).Returns(ticketSales.GetEnumerator());
+
+            _mockEventsQuery.Setup(e => e.Provider).Returns(events.AsQueryable().Provider);
+            _mockEventsQuery.Setup(e => e.Expression).Returns(events.AsQueryable().Expression);
+            _mockEventsQuery.Setup(e => e.ElementType).Returns(events.AsQueryable().ElementType);
+            _mockEventsQuery.Setup(e => e.GetEnumerator()).Returns(events.GetEnumerator());
+
+
+            // Act: Call the method to test
+            var ticketService = new TicketService(new TicketRepository(_mockSessionFactory.Object));
+            var result = ticketService.GetTopSellingEventsByRevenue();
+
+            // Assert: Check that the results are correct
+            Assert.AreEqual(5, result.Count);
+            Assert.AreEqual("5", result[0].Id); // Event with the highest revenue
+            Assert.AreEqual("1", result[1].Id); // Next highest revenue
+            Assert.AreEqual("3", result[2].Id); // Next
+            Assert.AreEqual("4", result[3].Id);
+            Assert.AreEqual("2", result[4].Id);
+        }
     }
+
 }
+

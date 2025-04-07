@@ -67,7 +67,7 @@ namespace LeapEventApi.Repositories
                             EndsOn = e.EndsOn,
                             Location = e.Location,
                             TotalRevenue = r.TotalRevenue
-                        })
+                        }).OrderByDescending(x => x.TotalRevenue)
                     .ToList();
 
                 return result;

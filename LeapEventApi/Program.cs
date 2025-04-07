@@ -59,6 +59,8 @@ namespace LeapEventApi
             app.UseSwagger();
             app.UseSwaggerUI();
 
+            app.UseHttpsRedirection();
+
             app.UseAuthorization();
 
             app.UseCors("AllowAll");
