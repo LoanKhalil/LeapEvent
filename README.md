@@ -2,8 +2,7 @@ Section 1: Coding Challenge (ASP.NET Core & JavaScript)
 
 Given database schema from skillsAssessmentEvents.db, I was able to use AI to generate a lot of the boiler plate code for the data access layer as well as the necessary services and api controller.
 
-Using Visual Studio 2022, I began with the ASP.NET Core Web API template
-Installed the necessary packages such as NHibernate & SQLite
+Using Visual Studio 2022, I began with the ASP.NET Core Web API template.  Then installed the necessary packages such as NHibernate & SQLite
 
 I chose to use Angular for the frontend, which again a lot of the code was generated using AI.
 I added the use of indexDB for caching on the client side.
